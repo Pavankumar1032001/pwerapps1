@@ -1,0 +1,653 @@
+Createdetails As screen:
+    Fill: =RGBA(214, 221, 224, 1)
+    LoadingSpinnerColor: =RGBA(100, 118, 132, 1)
+
+    header_container_2 As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.Bold
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =85
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        Width: =1366
+        ZIndex: =1
+
+        header_2 As Header:
+            DisplayMode: =DisplayMode.Edit
+            Height: =Parent.Height
+            Logo: =images_1
+            OnSelectLogo: =Navigate(home)
+            Title: ="Employee Details"
+            TitleFontSize: =30
+            UserEmail: =User().Email
+            UserImage: =User().Image
+            UserName: =User().FullName
+            Width: =Parent.Width
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+    formcontainer As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.Semibold
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =464
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        Width: =664
+        X: =345
+        Y: =147
+        ZIndex: =2
+
+        Form2 As form.PowerApps_CoreControls_Form:
+            BorderColor: =RGBA(32, 54, 71, 1)
+            DataSource: ='Empolyee details'
+            DefaultMode: =FormMode.New
+            Height: =464
+            Item: =gallery_1.Selected
+            NumberOfColumns: =2
+            OnSuccess: =Notify("Data has been sucessfully saved";NotificationType.Success);Back();
+            UseFluentV9Cards: =true
+            Width: =664
+            ZIndex: =1
+
+            Title_DataCard4 As typedDataCard.fluentV9TextualEditCard:
+                BorderColor: =RGBA(32, 54, 71, 1)
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="Title"
+                Default: =ThisItem.Title
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'Empolyee details'],DataSourceInfo.DisplayName,Title)
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =70
+                MaxLength: =DataSourceInfo([@'Empolyee details'], DataSourceInfo.MaxLength, Title)
+                Required: =false
+                Update: =DataCardValue31.Value
+                Width: =332
+                X: =0
+                Y: =0
+                ZIndex: =2
+
+                DataCardKey31 As Text:
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =22
+                    Text: =Parent.DisplayName
+                    Weight: ='TextCanvas.Weight'.Semibold
+                    Width: =Parent.Width - 48
+                    Wrap: =false
+                    X: =24
+                    Y: =10
+                    ZIndex: =1
+
+                "DataCardValue31 As 'Text input'":
+                    AccessibleLabel: =Parent.DisplayName
+                    DisplayMode: =Parent.DisplayMode
+                    Height: =32
+                    Mode: ="'TextInputCanvas.Mode'.TextInputModeSingleLine"
+                    Required: =Parent.Required
+                    ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                    Value: =Parent.Default
+                    Width: =Parent.Width - 48
+                    X: =24
+                    Y: =DataCardKey31.Y + DataCardKey31.Height + 4
+                    ZIndex: =2
+
+                ErrorMessage4 As Text:
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =30
+                    Text: =Parent.Error
+                    Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =Parent.Width - 48
+                    Wrap: =true
+                    X: =24
+                    Y: =DataCardValue31.Y + DataCardValue31.Height
+                    ZIndex: =3
+
+                StarVisible4 As Text:
+                    Align: ='TextCanvas.Align'.Center
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =30
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    X: =0
+                    Y: =DataCardKey31.Y
+                    ZIndex: =4
+
+            "'Emp Code_DataCard4' As typedDataCard.fluentV9NumberEditCard":
+                BorderColor: =RGBA(32, 54, 71, 1)
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="EmpCode"
+                Default: =ThisItem.'Emp Code'
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'Empolyee details'],DataSourceInfo.DisplayName,EmpCode)
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =70
+                Required: =false
+                Update: =Value(DataCardValue32.Value)
+                Width: =332
+                X: =1
+                Y: =0
+                ZIndex: =2
+
+                DataCardKey32 As Text:
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =22
+                    Text: =Parent.DisplayName
+                    Weight: ='TextCanvas.Weight'.Semibold
+                    Width: =Parent.Width - 48
+                    Wrap: =false
+                    X: =24
+                    Y: =10
+                    ZIndex: =1
+
+                "DataCardValue32 As 'Text input'":
+                    AccessibleLabel: =If(Parent.Required, Substitute("{0}. Required.", "{0}", Parent.DisplayName), Parent.DisplayName)
+                    DisplayMode: =Parent.DisplayMode
+                    Height: =32
+                    ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                    Value: =Parent.Default
+                    Width: =Parent.Width - 48
+                    X: =24
+                    Y: =DataCardKey32.Y + DataCardKey32.Height + 4
+                    ZIndex: =2
+
+                ErrorMessage5 As Text:
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =30
+                    Text: =Parent.Error
+                    Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =Parent.Width - 48
+                    Wrap: =true
+                    X: =24
+                    Y: =DataCardValue32.Y + DataCardValue32.Height
+                    ZIndex: =3
+
+                StarVisible5 As Text:
+                    Align: ='TextCanvas.Align'.Center
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =30
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    X: =0
+                    Y: =DataCardKey32.Y
+                    ZIndex: =4
+
+            "'Employee Name_DataCard4' As typedDataCard.fluentV9TextualEditCard":
+                BorderColor: =RGBA(32, 54, 71, 1)
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="EmployeeName"
+                Default: =ThisItem.'Employee Name'
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'Empolyee details'],DataSourceInfo.DisplayName,EmployeeName)
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =70
+                MaxLength: =DataSourceInfo([@'Empolyee details'], DataSourceInfo.MaxLength, EmployeeName)
+                Required: =false
+                Update: =DataCardValue33.Value
+                Width: =332
+                X: =0
+                Y: =1
+                ZIndex: =2
+
+                DataCardKey33 As Text:
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =22
+                    Text: =Parent.DisplayName
+                    Weight: ='TextCanvas.Weight'.Semibold
+                    Width: =Parent.Width - 48
+                    Wrap: =false
+                    X: =24
+                    Y: =10
+                    ZIndex: =1
+
+                "DataCardValue33 As 'Text input'":
+                    AccessibleLabel: =Parent.DisplayName
+                    DisplayMode: =Parent.DisplayMode
+                    Height: =32
+                    Mode: ="'TextInputCanvas.Mode'.TextInputModeSingleLine"
+                    Required: =Parent.Required
+                    ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                    Value: =Parent.Default
+                    Width: =Parent.Width - 48
+                    X: =24
+                    Y: =DataCardKey33.Y + DataCardKey33.Height + 4
+                    ZIndex: =2
+
+                ErrorMessage6 As Text:
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =30
+                    Text: =Parent.Error
+                    Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =Parent.Width - 48
+                    Wrap: =true
+                    X: =24
+                    Y: =DataCardValue33.Y + DataCardValue33.Height
+                    ZIndex: =3
+
+                StarVisible6 As Text:
+                    Align: ='TextCanvas.Align'.Center
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =30
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    X: =0
+                    Y: =DataCardKey33.Y
+                    ZIndex: =4
+
+            Department_DataCard4 As typedDataCard.fluentV9ComboBoxEditCard:
+                BorderColor: =RGBA(32, 54, 71, 1)
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="Department"
+                Default: =ThisItem.Department
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'Empolyee details'],DataSourceInfo.DisplayName,Department)
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =70
+                Required: =false
+                Update: =DataCardValue34.Selected
+                Width: =332
+                X: =1
+                Y: =1
+                ZIndex: =2
+
+                DataCardKey34 As Text:
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =22
+                    Text: =Parent.DisplayName
+                    Weight: ='TextCanvas.Weight'.Semibold
+                    Width: =Parent.Width - 48
+                    Wrap: =false
+                    X: =24
+                    Y: =10
+                    ZIndex: =1
+
+                DataCardValue34 As Combobox.pcfdataset:
+                    AccessibleLabel: =If(Parent.Required, Substitute("{0}. Required.", "{0}", Parent.DisplayName), Parent.DisplayName)
+                    DefaultSelectedItems: =[Parent.Default]
+                    DisplayMode: =Parent.DisplayMode
+                    Height: =32
+                    Items: =Choices([@'Empolyee details'].Department)
+                    ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                    Width: =Parent.Width - 48
+                    X: =24
+                    Y: =DataCardKey34.Y + DataCardKey34.Height + 4
+                    ZIndex: =2
+
+                ErrorMessage7 As Text:
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =30
+                    Text: =Parent.Error
+                    Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =Parent.Width - 48
+                    Wrap: =true
+                    X: =24
+                    Y: =DataCardValue34.Y + DataCardValue34.Height
+                    ZIndex: =3
+
+                StarVisible7 As Text:
+                    Align: ='TextCanvas.Align'.Center
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =20
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    X: =0
+                    Y: =DataCardKey34.Y
+                    ZIndex: =4
+
+            Address_DataCard4 As typedDataCard.fluentV9TextualEditCard:
+                BorderColor: =RGBA(32, 54, 71, 1)
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="Address"
+                Default: =ThisItem.Address
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'Empolyee details'],DataSourceInfo.DisplayName,Address)
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =90
+                MaxLength: =DataSourceInfo([@'Empolyee details'], DataSourceInfo.MaxLength, Address)
+                Required: =false
+                Update: =DataCardValue35.Value
+                Width: =332
+                X: =0
+                Y: =2
+                ZIndex: =2
+
+                DataCardKey35 As Text:
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =22
+                    Text: =Parent.DisplayName
+                    Weight: ='TextCanvas.Weight'.Semibold
+                    Width: =Parent.Width - 48
+                    Wrap: =false
+                    X: =24
+                    Y: =10
+                    ZIndex: =1
+
+                "DataCardValue35 As 'Text input'":
+                    AccessibleLabel: =Parent.DisplayName
+                    DisplayMode: =Parent.DisplayMode
+                    Height: =50
+                    Mode: ="'TextInputCanvas.Mode'.TextInputModeSingleLine"
+                    PaddingBottom: =
+                    Required: =Parent.Required
+                    ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                    Value: =Parent.Default
+                    Width: =Parent.Width - 48
+                    X: =24
+                    Y: =DataCardKey35.Y + DataCardKey35.Height + 4
+                    ZIndex: =2
+
+                ErrorMessage8 As Text:
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =30
+                    Text: =Parent.Error
+                    Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =Parent.Width - 48
+                    Wrap: =true
+                    X: =24
+                    Y: =DataCardValue35.Y + DataCardValue35.Height
+                    ZIndex: =3
+
+                StarVisible8 As Text:
+                    Align: ='TextCanvas.Align'.Center
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =30
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    X: =0
+                    Y: =DataCardKey35.Y
+                    ZIndex: =4
+
+            "'Date and Time_DataCard4' As typedDataCard.fluentV9DateEditCard":
+                BorderColor: =RGBA(32, 54, 71, 1)
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="DateandTime"
+                Default: =ThisItem.'Date and Time'
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'Empolyee details'],DataSourceInfo.DisplayName,DateandTime)
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =70
+                Required: =false
+                Update: =DataCardValue36.SelectedDate
+                Width: =332
+                X: =1
+                Y: =2
+                ZIndex: =2
+
+                DataCardKey36 As Text:
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =22
+                    Text: =Parent.DisplayName
+                    Weight: ='TextCanvas.Weight'.Semibold
+                    Width: =Parent.Width - 48
+                    Wrap: =false
+                    X: =24
+                    Y: =10
+                    ZIndex: =1
+
+                "DataCardValue36 As 'Date picker'":
+                    AccessibleLabel: =If(Parent.Required, Substitute("{0}. Required.", "{0}", Parent.DisplayName), Parent.DisplayName)
+                    DisplayMode: =Parent.DisplayMode
+                    EndDate: =Date(Year(Today())+100, 12, 31)
+                    Height: =32
+                    SelectedDate: =Parent.Default
+                    StartDate: =Date(1900, 1, 1)
+                    ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                    Width: =Parent.Width - 48
+                    X: =24
+                    Y: =DataCardKey36.Y + DataCardKey36.Height + 4
+                    ZIndex: =2
+
+                ErrorMessage9 As Text:
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =30
+                    Text: =Parent.Error
+                    Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =Parent.Width - 48
+                    Wrap: =true
+                    X: =24
+                    Y: =DataCardValue36.Y + DataCardValue36.Height
+                    ZIndex: =3
+
+                StarVisible9 As Text:
+                    Align: ='TextCanvas.Align'.Center
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =30
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    X: =0
+                    Y: =DataCardKey36.Y
+                    ZIndex: =4
+
+            Salary_DataCard4 As typedDataCard.fluentV9NumberEditCard:
+                BorderColor: =RGBA(32, 54, 71, 1)
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="Salary"
+                Default: =ThisItem.Salary
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'Empolyee details'],DataSourceInfo.DisplayName,Salary)
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =70
+                Required: =false
+                Update: =Value(DataCardValue37.Value)
+                Width: =332
+                X: =0
+                Y: =3
+                ZIndex: =2
+
+                DataCardKey37 As Text:
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =22
+                    Text: =Parent.DisplayName
+                    Weight: ='TextCanvas.Weight'.Semibold
+                    Width: =Parent.Width - 48
+                    Wrap: =false
+                    X: =24
+                    Y: =10
+                    ZIndex: =1
+
+                "DataCardValue37 As 'Text input'":
+                    AccessibleLabel: =If(Parent.Required, Substitute("{0}. Required.", "{0}", Parent.DisplayName), Parent.DisplayName)
+                    DisplayMode: =Parent.DisplayMode
+                    Height: =32
+                    ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                    Value: =Parent.Default
+                    Width: =Parent.Width - 48
+                    X: =24
+                    Y: =DataCardKey37.Y + DataCardKey37.Height + 4
+                    ZIndex: =2
+
+                ErrorMessage10 As Text:
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =30
+                    Text: =Parent.Error
+                    Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =Parent.Width - 48
+                    Wrap: =true
+                    X: =24
+                    Y: =DataCardValue37.Y + DataCardValue37.Height
+                    ZIndex: =3
+
+                StarVisible10 As Text:
+                    Align: ='TextCanvas.Align'.Center
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =30
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    X: =0
+                    Y: =DataCardKey37.Y
+                    ZIndex: =4
+
+            Consent_DataCard4 As typedDataCard.fluentV9ToggleEditCard:
+                BorderColor: =RGBA(32, 54, 71, 1)
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="Consent"
+                Default: =ThisItem.Consent
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'Empolyee details'],DataSourceInfo.DisplayName,Consent)
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =70
+                Required: =false
+                Update: =DataCardValue38.Checked
+                Width: =332
+                X: =1
+                Y: =3
+                ZIndex: =2
+
+                DataCardKey38 As Text:
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =22
+                    Text: =Parent.DisplayName
+                    Weight: ='TextCanvas.Weight'.Semibold
+                    Width: =Parent.Width - 48
+                    Wrap: =false
+                    X: =24
+                    Y: =10
+                    ZIndex: =1
+
+                DataCardValue38 As Toggle:
+                    AccessibleLabel: =If(Parent.Required, Substitute("{0}. Required.", "{0}", Parent.DisplayName), Parent.DisplayName)
+                    Checked: =Parent.Default
+                    DisplayMode: =Parent.DisplayMode
+                    Height: =32
+                    Label: =""
+                    OnCheck: =false
+                    OnUncheck: =false
+                    Width: =Parent.Width - 48
+                    X: =24
+                    Y: =DataCardKey38.Y + DataCardKey38.Height + 4
+                    ZIndex: =2
+
+                ErrorMessage11 As Text:
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =30
+                    Text: =Parent.Error
+                    Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =Parent.Width - 48
+                    Wrap: =true
+                    X: =24
+                    Y: =DataCardValue38.Y + DataCardValue38.Height
+                    ZIndex: =3
+
+                StarVisible11 As Text:
+                    Align: ='TextCanvas.Align'.Center
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =30
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    X: =0
+                    Y: =DataCardKey38.Y
+                    ZIndex: =4
+
+            Num1_DataCard4 As typedDataCard.fluentV9NumberEditCard:
+                BorderColor: =RGBA(32, 54, 71, 1)
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="OData__x004e_um1"
+                Default: =ThisItem.Num1
+                DisplayMode: =Parent.DisplayMode
+                DisplayName: =DataSourceInfo([@'Empolyee details'],DataSourceInfo.DisplayName,OData__x004e_um1)
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =70
+                Required: =false
+                Update: =Value(DataCardValue39.Value)
+                Width: =332
+                X: =0
+                Y: =4
+                ZIndex: =2
+
+                DataCardKey39 As Text:
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =22
+                    Text: =Parent.DisplayName
+                    Weight: ='TextCanvas.Weight'.Semibold
+                    Width: =Parent.Width - 48
+                    Wrap: =false
+                    X: =24
+                    Y: =10
+                    ZIndex: =1
+
+                "DataCardValue39 As 'Text input'":
+                    AccessibleLabel: =If(Parent.Required, Substitute("{0}. Required.", "{0}", Parent.DisplayName), Parent.DisplayName)
+                    DisplayMode: =Parent.DisplayMode
+                    Height: =32
+                    ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                    Value: =Parent.Default
+                    Width: =Parent.Width - 48
+                    X: =24
+                    Y: =DataCardKey39.Y + DataCardKey39.Height + 4
+                    ZIndex: =2
+
+                ErrorMessage12 As Text:
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =30
+                    Text: =Parent.Error
+                    Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =Parent.Width - 48
+                    Wrap: =true
+                    X: =24
+                    Y: =DataCardValue39.Y + DataCardValue39.Height
+                    ZIndex: =3
+
+                StarVisible12 As Text:
+                    Align: ='TextCanvas.Align'.Center
+                    DisplayMode: =DisplayMode.Edit
+                    Height: =30
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    X: =0
+                    Y: =DataCardKey39.Y
+                    ZIndex: =4
+
+    btnconatiner As groupContainer.horizontalAutoLayoutContainer:
+        ContentLanguage: =
+        DropShadow: =DropShadow.Semibold
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =120
+        LayoutAlignItems: =LayoutAlignItems.Center
+        LayoutGap: =30
+        LayoutJustifyContent: =LayoutJustifyContent.Center
+        LayoutMode: =LayoutMode.Auto
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        X: =447
+        Y: =648
+        ZIndex: =3
+
+        btnsave As Button:
+            DisplayMode: =DisplayMode.Edit
+            Height: =40
+            Icon: ="Save"
+            LayoutMinHeight: =32
+            LayoutMinWidth: =96
+            OnSelect: =SubmitForm(Form2)
+            Text: ="save"
+            Width: =96
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+        btncancel As Button:
+            DisplayMode: =DisplayMode.Edit
+            Height: =40
+            Icon: ="DismissCircle"
+            LayoutMinHeight: =32
+            LayoutMinWidth: =96
+            OnSelect: =ResetForm(Form2);Notify("form has been successfully cancelled",NotificationType.Error);Back();
+            Text: ="Cancel"
+            Width: =96
+            X: =0
+            Y: =0
+            ZIndex: =2
+

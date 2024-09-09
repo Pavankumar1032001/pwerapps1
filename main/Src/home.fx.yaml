@@ -1,0 +1,136 @@
+home As screen:
+    Fill: =RGBA(214, 221, 224, 1)
+    LoadingSpinnerColor: =RGBA(100, 118, 132, 1)
+    Width: =
+
+    header_container As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.Bold
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =85
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        Width: =1366
+        ZIndex: =1
+
+        header As Header:
+            DisplayMode: =DisplayMode.Edit
+            Height: =Parent.Height
+            Logo: =images_1
+            OnSelectLogo: =false
+            Title: ="Employee Details"
+            TitleFontSize: =30
+            UserEmail: =User().Email
+            UserImage: =User().Image
+            UserName: =User().FullName
+            Width: =Parent.Width
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+    middle_container As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.Bold
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =483
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        Width: =1266
+        X: =39
+        Y: =249
+        ZIndex: =2
+
+        "gallery_1 As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver5.0'":
+            BorderColor: =RGBA(32, 54, 71, 1)
+            DelayItemLoading: =true
+            Height: =Parent.Height
+            Items: ='Empolyee details'
+            Layout: =Layout.Vertical
+            LoadingSpinner: =LoadingSpinner.Data
+            TemplatePadding: =0
+            TemplateSize: =90
+            Width: =Parent.Width
+            ZIndex: =1
+
+            Title12 As label:
+                Color: =App.Theme.Colors.Primary
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                Height: =Self.Size * 1.8
+                OnSelect: =Select(Parent)
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =ThisItem.'Employee Name'
+                VerticalAlign: =VerticalAlign.Top
+                Width: =Parent.TemplateWidth - 86
+                X: =16
+                Y: =(Parent.TemplateHeight - (Self.Size*1.8 + Subtitle12.Size*1.8 + 2 + Body6.Size*1.8)) / 2
+                ZIndex: =1
+
+            Subtitle12 As label:
+                Color: =App.Theme.Colors.Primary
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                Height: =Self.Size * 1.8
+                OnSelect: =Select(Parent)
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =12
+                Text: |-
+                    =Text(ThisItem.Salary,"$##,##0.00")
+                VerticalAlign: =VerticalAlign.Top
+                Width: =Title12.Width
+                X: =Title12.X
+                Y: =Title12.Y + Title12.Height
+                ZIndex: =2
+
+            Body6 As label:
+                Color: =Switch(ThisItem.Department.Value,"HR",Color.DarkRed,"IT",Color.DarkGreen,"FINANCE",Color.DarkGoldenRod)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                Height: =Self.Size * 1.8
+                OnSelect: =Select(Parent)
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =12
+                Text: =ThisItem.Department.Value
+                VerticalAlign: =VerticalAlign.Top
+                Width: =Title12.Width
+                X: =Title12.X
+                Y: =Subtitle12.Y + Subtitle12.Height
+                ZIndex: =3
+
+            iconview As icon.View:
+                BorderColor: =RGBA(32, 54, 71, 1)
+                Color: =RGBA(32, 54, 71, 1)
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(244, 244, 244, 1)
+                Height: =50
+                Icon: =Icon.View
+                OnSelect: =Select(Parent);Navigate(Createdetails);NewForm(Form2);
+                Width: =50
+                X: =1172
+                Y: =26
+                ZIndex: =4
+
+            iconadd As icon.Add:
+                BorderColor: =RGBA(32, 54, 71, 1)
+                Color: =RGBA(32, 54, 71, 1)
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(244, 244, 244, 1)
+                Height: =50
+                Icon: =Icon.Add
+                OnSelect: =Select(Parent);Navigate('Detials screen');
+                Width: =50
+                X: =1086
+                Y: =26
+                ZIndex: =5
+

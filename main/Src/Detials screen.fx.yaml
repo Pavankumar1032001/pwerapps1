@@ -1,0 +1,495 @@
+"'Detials screen' As screen":
+    Fill: =RGBA(214, 221, 224, 1)
+    LoadingSpinnerColor: =RGBA(100, 118, 132, 1)
+
+    header_container_1 As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.Bold
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =85
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        Width: =1366
+        ZIndex: =1
+
+        header_1 As Header:
+            DisplayMode: =DisplayMode.Edit
+            Height: =Parent.Height
+            Logo: =images_1
+            OnSelectLogo: =Navigate(home)
+            Title: ="Employee Details"
+            TitleFontSize: =30
+            UserEmail: =User().Email
+            UserImage: =User().Image
+            UserName: =User().FullName
+            Width: =Parent.Width
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+    Container1 As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.Bold
+        Height: =444
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        Width: =644
+        X: =324
+        Y: =213
+        ZIndex: =2
+
+        FormViewer4 As formViewer:
+            BorderColor: =RGBA(32, 54, 71, 1)
+            DataSource: ='Empolyee details'
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =Parent.Height
+            Item: =gallery_1.Selected
+            NumberOfColumns: =2
+            Width: =Parent.Width
+            ZIndex: =1
+
+            "'Emp Code_DataCard3' As typedDataCard.textualViewCard":
+                BorderColor: =RGBA(32, 54, 71, 1)
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="EmpCode"
+                Default: =ThisItem.'Emp Code'
+                DisplayMode: =DisplayMode.View
+                DisplayName: =DataSourceInfo([@'Empolyee details'],DataSourceInfo.DisplayName,EmpCode)
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =40
+                Required: =false
+                Width: =322
+                X: =0
+                Y: =0
+                ZIndex: =2
+
+                DataCardKey22 As label:
+                    AutoHeight: =true
+                    Color: =RGBA(32, 54, 71, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    Height: =34
+                    Size: =13
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                DataCardValue22 As label:
+                    AutoHeight: =true
+                    BorderColor: =RGBA(32, 54, 71, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisplayMode: =Parent.DisplayMode
+                    Height: =27
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Size: =13
+                    Text: =Parent.Default
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardKey22.Y + DataCardKey22.Height + 5
+                    ZIndex: =2
+
+            "'Employee Name_DataCard3' As typedDataCard.textualViewCard":
+                BorderColor: =RGBA(32, 54, 71, 1)
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="EmployeeName"
+                Default: =ThisItem.'Employee Name'
+                DisplayMode: =DisplayMode.View
+                DisplayName: =DataSourceInfo([@'Empolyee details'],DataSourceInfo.DisplayName,EmployeeName)
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =40
+                Required: =false
+                Width: =322
+                X: =1
+                Y: =0
+                ZIndex: =2
+
+                DataCardKey23 As label:
+                    AutoHeight: =true
+                    Color: =RGBA(32, 54, 71, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    Height: =34
+                    Size: =13
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                DataCardValue23 As label:
+                    AutoHeight: =true
+                    BorderColor: =RGBA(32, 54, 71, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisplayMode: =Parent.DisplayMode
+                    Height: =27
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Size: =13
+                    Text: =Parent.Default
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardKey23.Y + DataCardKey23.Height + 5
+                    ZIndex: =2
+
+            Department_DataCard3 As typedDataCard.comboBoxViewCard:
+                BorderColor: =RGBA(32, 54, 71, 1)
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="Department"
+                Default: =ThisItem.Department
+                DisplayMode: =DisplayMode.View
+                DisplayName: =DataSourceInfo([@'Empolyee details'],DataSourceInfo.DisplayName,Department)
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =50
+                Required: =false
+                Update: =DataCardValue24.Selected
+                Width: =322
+                X: =0
+                Y: =1
+                ZIndex: =2
+
+                DataCardKey24 As label:
+                    AutoHeight: =true
+                    Color: =RGBA(32, 54, 71, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    Height: =34
+                    Size: =13
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                DataCardValue24 As combobox:
+                    BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                    ChevronBackground: =RGBA(100, 118, 132, 1)
+                    ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                    ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                    ChevronHoverBackground: =ColorFade(RGBA(100, 118, 132, 1), -20%)
+                    ChevronHoverFill: =RGBA(255, 255, 255, 1)
+                    DefaultSelectedItems: =Parent.Default
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(244, 244, 244, 1)
+                    DisplayMode: =Parent.DisplayMode
+                    HoverColor: =RGBA(0, 0, 0, 1)
+                    HoverFill: =RGBA(205, 209, 213, 1)
+                    Items: =Choices([@'Empolyee details'].Department)
+                    PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                    PressedColor: =RGBA(255, 255, 255, 1)
+                    PressedFill: =RGBA(32, 54, 71, 1)
+                    SelectionFill: =RGBA(100, 118, 132, 1)
+                    SelectMultiple: =false
+                    Size: =13
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardKey24.Y + DataCardKey24.Height + 5
+                    ZIndex: =2
+
+                ErrorMessage3 As label:
+                    AutoHeight: =true
+                    Color: =RGBA(168, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    FontWeight: =FontWeight.Semibold
+                    Height: =10
+                    Live: =Live.Assertive
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =Parent.Error
+                    Visible: =Parent.DisplayMode=DisplayMode.Edit
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardValue24.Y + DataCardValue24.Height
+                    ZIndex: =3
+
+                StarVisible3 As label:
+                    Align: =Align.Center
+                    Color: =RGBA(32, 54, 71, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    Height: =DataCardKey24.Height
+                    Size: =13
+                    Text: ="*"
+                    Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                    Width: =30
+                    Wrap: =false
+                    Y: =DataCardKey24.Y
+                    ZIndex: =4
+
+            "'Date and Time_DataCard3' As typedDataCard.textualViewCard":
+                BorderColor: =RGBA(32, 54, 71, 1)
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="DateandTime"
+                Default: =ThisItem.'Date and Time'
+                DisplayMode: =DisplayMode.View
+                DisplayName: =DataSourceInfo([@'Empolyee details'],DataSourceInfo.DisplayName,DateandTime)
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =40
+                Required: =false
+                Width: =322
+                X: =0
+                Y: =2
+                ZIndex: =2
+
+                DataCardKey26 As label:
+                    AutoHeight: =true
+                    Color: =RGBA(32, 54, 71, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    Height: =34
+                    Size: =13
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                DataCardValue26 As label:
+                    AutoHeight: =true
+                    BorderColor: =RGBA(32, 54, 71, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisplayMode: =Parent.DisplayMode
+                    Height: =27
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Size: =13
+                    Text: =Parent.Default
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardKey26.Y + DataCardKey26.Height + 5
+                    ZIndex: =2
+
+            Consent_DataCard3 As typedDataCard.toggleViewCard:
+                BorderColor: =RGBA(32, 54, 71, 1)
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="Consent"
+                Default: =ThisItem.Consent
+                DisplayMode: =DisplayMode.View
+                DisplayName: =DataSourceInfo([@'Empolyee details'],DataSourceInfo.DisplayName,Consent)
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =50
+                Required: =false
+                Width: =322
+                X: =0
+                Y: =3
+                ZIndex: =2
+
+                DataCardKey28 As label:
+                    AutoHeight: =true
+                    Color: =RGBA(32, 54, 71, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    Height: =34
+                    Size: =13
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                DataCardValue28 As toggleSwitch:
+                    BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                    Color: =RGBA(0, 0, 0, 1)
+                    Default: =Parent.Default
+                    DisplayMode: =Parent.DisplayMode
+                    FalseFill: =RGBA(128, 130, 133, 1)
+                    HandleFill: =RGBA(255, 255, 255, 1)
+                    Size: =13
+                    TrueFill: =RGBA(100, 118, 132, 1)
+                    X: =30
+                    Y: =DataCardKey28.Y + DataCardKey28.Height + 5
+                    ZIndex: =2
+
+            Num2_DataCard3 As typedDataCard.textualViewCard:
+                BorderColor: =RGBA(32, 54, 71, 1)
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="OData__x004e_um2"
+                Default: =ThisItem.Num2
+                DisplayMode: =DisplayMode.View
+                DisplayName: =DataSourceInfo([@'Empolyee details'],DataSourceInfo.DisplayName,OData__x004e_um2)
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =40
+                Required: =false
+                Width: =322
+                X: =0
+                Y: =4
+                ZIndex: =2
+
+                DataCardKey30 As label:
+                    AutoHeight: =true
+                    Color: =RGBA(32, 54, 71, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    Height: =34
+                    Size: =13
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                DataCardValue30 As label:
+                    AutoHeight: =true
+                    BorderColor: =RGBA(32, 54, 71, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisplayMode: =Parent.DisplayMode
+                    Height: =27
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Size: =13
+                    Text: =Parent.Default
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardKey30.Y + DataCardKey30.Height + 5
+                    ZIndex: =2
+
+            Address_DataCard3 As typedDataCard.textualViewCard:
+                BorderColor: =RGBA(32, 54, 71, 1)
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="Address"
+                Default: =ThisItem.Address
+                DisplayMode: =DisplayMode.View
+                DisplayName: =DataSourceInfo([@'Empolyee details'],DataSourceInfo.DisplayName,Address)
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =40
+                Required: =false
+                Width: =322
+                X: =1
+                Y: =1
+                ZIndex: =2
+
+                DataCardKey25 As label:
+                    AutoHeight: =true
+                    Color: =RGBA(32, 54, 71, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    Height: =34
+                    Size: =13
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                DataCardValue25 As label:
+                    AutoHeight: =true
+                    BorderColor: =RGBA(32, 54, 71, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisplayMode: =Parent.DisplayMode
+                    Height: =27
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Size: =13
+                    Text: =Parent.Default
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardKey25.Y + DataCardKey25.Height + 5
+                    ZIndex: =2
+
+            Salary_DataCard3 As typedDataCard.textualViewCard:
+                BorderColor: =RGBA(32, 54, 71, 1)
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="Salary"
+                Default: =ThisItem.Salary
+                DisplayMode: =DisplayMode.View
+                DisplayName: =DataSourceInfo([@'Empolyee details'],DataSourceInfo.DisplayName,Salary)
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =40
+                Required: =false
+                Width: =322
+                X: =1
+                Y: =2
+                ZIndex: =2
+
+                DataCardKey27 As label:
+                    AutoHeight: =true
+                    Color: =RGBA(32, 54, 71, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    Height: =34
+                    Size: =13
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                DataCardValue27 As label:
+                    AutoHeight: =true
+                    BorderColor: =RGBA(32, 54, 71, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisplayMode: =Parent.DisplayMode
+                    Height: =27
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Size: =13
+                    Text: |-
+                        =Text(ThisItem.Salary,"$##,##0.00")
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardKey27.Y + DataCardKey27.Height + 5
+                    ZIndex: =2
+
+            Num1_DataCard3 As typedDataCard.textualViewCard:
+                BorderColor: =RGBA(32, 54, 71, 1)
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="OData__x004e_um1"
+                Default: =ThisItem.Num1
+                DisplayMode: =DisplayMode.View
+                DisplayName: =DataSourceInfo([@'Empolyee details'],DataSourceInfo.DisplayName,OData__x004e_um1)
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =40
+                Required: =false
+                Width: =322
+                X: =1
+                Y: =3
+                ZIndex: =2
+
+                DataCardKey29 As label:
+                    AutoHeight: =true
+                    Color: =RGBA(32, 54, 71, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    Height: =34
+                    Size: =13
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                DataCardValue29 As label:
+                    AutoHeight: =true
+                    BorderColor: =RGBA(32, 54, 71, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    DisplayMode: =Parent.DisplayMode
+                    Height: =27
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Size: =13
+                    Text: =Parent.Default
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardKey29.Y + DataCardKey29.Height + 5
+                    ZIndex: =2
+
